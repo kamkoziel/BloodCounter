@@ -50,4 +50,4 @@ python main.py
 
 **Kamil Kozieł**
 
-[kkoziel@outlook.com](email@kkoziel@outlook.com)
+[kkoziel@outlook.com](kkoziel@outlook.com)
