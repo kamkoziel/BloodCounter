@@ -1,7 +1,9 @@
 from PyQt5.QtCore import QDir, Qt
-from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QSplitter
+from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QSplitter, QMessageBox
 from PyQt5.QtWidgets import QWidget, QLabel, QFileSystemModel, QTreeView
 from PyQt5.QtGui import QPixmap, QImage
+
+from dicom import DICOM, FileFormatError
 
 
 class MainWidget(QWidget):
@@ -9,8 +11,8 @@ class MainWidget(QWidget):
         super().__init__()
         self.left = 10
         self.top = 10
-        self.width = 800
-        self.height = 650
+        self.width = 400
+        self.height = 500
         self.leftPanelWidth = 250
         self.initUI()
 
@@ -25,8 +27,8 @@ class MainWidget(QWidget):
                 AEC:      {0}
                ''')
 
-        self.archive_label.setMaximumHeight(30)
-        self.user_label.setMaximumHeight(30)
+        self.archive_label.setMaximumHeight(40)
+        self.user_label.setMaximumHeight(40)
 
         self.model = QFileSystemModel()
         self.model.setRootPath(r'C:\Users\kkozi\Documents\WORKSPACE\pomwj_projekt\data ')
@@ -65,9 +67,17 @@ class MainWidget(QWidget):
         path = self.model.filePath(index)
         self.img = QPixmap.fromImage(QImage(path))
         self.imgLabel.setPixmap(self.img)
+        try:
+            DICOM.loadData(path)
+        except FileFormatError as ex:
+            print(ex)
+            QMessageBox.information(self,
+                                    'Format no supported',
+                                    '{0}'.format(str(ex.message)),
+                                    QMessageBox.Ok)
 
     def resizeEvent(self, event):
         self.img = self.img.scaled(self.imgLabel.width() *0.7, self.imgLabel.height()*0.7, Qt.KeepAspectRatio)
         self.imgLabel.setPixmap(self.img)
-        self.imgLabel.resize(self.width-70, self.height-70)
+        self.imgLabel.resize(self.width*0.8, self.height*0.8)
 

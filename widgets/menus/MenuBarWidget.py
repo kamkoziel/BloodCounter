@@ -5,7 +5,8 @@ from widgets.MainWidget import MainWidget
 class MenuBarWidget(QMenuBar):
     def __init__(self, mainWidget):
         super().__init__()
-        self.setStyleSheet("background: #393e46")
+        self.setStyleSheet('''background: #393e46;
+                                :hover{background: #232931;}''')
         self.mainWidget: MainWidget = mainWidget
 
         self.file = self.addMenu("File")
