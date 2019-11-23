@@ -13,13 +13,14 @@ Field of study:
 
 -- **Biomedical Engineering** --
 
-##Start
+## Start
+
 ### Clone repo
 ```git
 git clone https://github.com/ropusch/BloodCounter.git
 ```
 
-###Make python venv
+### Make python venv
 
 ```git
 python3 -m venv /path/to/project
@@ -42,7 +43,11 @@ python main.py
 **Enjoy! =)**
 
 
-##Authors:
-Brajan Mika
+## Authors:
+**Brajan Mika**
 
-Kamil Kozieł
+[todoEmail@email.com]()
+
+**Kamil Kozieł**
+
+[kkoziel@outlook.com](email@kkoziel@outlook.com)
