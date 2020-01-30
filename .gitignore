@@ -1,2 +1,7 @@
 /data/TCGA-LIHC/
+/data/BPC/
+/data/NPC/
+/data/
 /venv/
+/tests/colored.png
+/tests/first_label.png

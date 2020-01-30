@@ -1,9 +1,7 @@
-from PyQt5 import QtGui, QtCore
+from PyQt5 import QtGui, QtCore, Qt
 from PyQt5.QtWidgets import QMainWindow
 from widgets.MainWidget import MainWidget
 from widgets.menus.MenuBarWidget import MenuBarWidget
-
-
 
 class App(QMainWindow):
     def __init__(self):
@@ -18,62 +16,17 @@ class App(QMainWindow):
 
     def initUI(self):
         mianWidget = MainWidget()
-        self.setStyleSheet('''        
-        QMainWindow{
-        background: #232931;
-        color: #eeeeee;
-        }
-        QMenuBar{
-        background: #393e46;
-        color: #eeeeee;
-        }
-        QMenuBar::item:selected{
-        background: #232931;
-        color: #eeeeee;
-        }
-        QMenu{
-        background: #393e46;
-        color: #eeeeee;
-        }
-        QMenu::item:selected {
-        background: #232931;
-        }
-        QWidget{
-        color: #eeeeee;}
-        
-        QView{
-        border: 1 1 1 1 #232931;
-        }        
-        QTreeView{
-        background: #232931;
-        color: #eeeeee;        
-        border: 2px solid #393e46;
-        }
-        QHeaderView::section{
-        background: #393e46;
-        color: #eeeeee;
-        }
-        QSplitter::handle:horizontal{
-        background: #4ecca3;
-        }
-        QStatusBar{
-         background: #4ecca3;
-         color:#393e46;
-        }
-        QMessageBox{
-         background: #232931;         
-        }
-         QMessageBox QPushButton{
-         background: #393e46;         
-        }
-        ''')
-        self.setWindowIcon(QtGui.QIcon('img/DPC.png'))
+        self.setStyleSheet(self.getStyle())
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
         self.setMenuBar(MenuBarWidget(mianWidget))
-        self.statusBar().showMessage('Ready')
+        self.statusBar().showMessage('Let\'s count')
         self.setCentralWidget(mianWidget)
-
 
         self.show()
 
+    def getStyle(self):
+        css_file = open('style.css', 'r')
+        style = css_file.read()
+
+        return style

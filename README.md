@@ -1,7 +1,7 @@
 # Blood Counter
 ## Project purpose 
 
-The program is responsible for counting and classifying blood cells based on blood smear images.
+The program is responsible for counting white blood cells based on bone marrow smear images.
 ### Why?
 Passing the course of the project **Processing medical images in object-oriented languages**
 
@@ -15,7 +15,7 @@ Field of study:
 
 ## Start
 
-### Clone repo
+### Clone repository
 ```git
 git clone https://github.com/ropusch/BloodCounter.git
 ```
